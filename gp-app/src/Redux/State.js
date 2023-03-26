@@ -1,3 +1,6 @@
+import Profile_Reducer from "./Profile_Reducer";
+import Dialogs_Reducer from "./Dialogs_Reducer";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE_NEW_MESSAGE_BODY';
 const SEND_MESSAGE = 'SEND_MESSAGE';
@@ -38,24 +41,10 @@ let Store = {
         this._Coll_Subscriber = Observer;
     },
     Dispatch (Action) {
-        if (Action.Type === ADD_POST){
-            let New_Post = {
-                id:5,
-                Post: Action.New_Text
-            }
-            this._State.Profile_Page.Posts.push(New_Post);
-            this._Coll_Subscriber (this._State);
-        } else if (Action.Type === UPDATE_NEW_MESSAGE_BODY) {
-            this._State.Dialogs_Page.New_Message_Body = Action.New_Text_Message;
-            this._Coll_Subscriber(this._State)
-        }else if (Action.Type === SEND_MESSAGE) {
-            let Body = '';
-                Body = this._State.Dialogs_Page.New_Message_Body; // текст в textArea при клике на отправить
-            this._State.Dialogs_Page.Messages.push({id:6, Message: Body});
-            console.log(Body)
-            this._State.Dialogs_Page.New_Message_Body = ''; //Зануление textArea после отправки
-            this._Coll_Subscriber(this._State);
-        }
+        this._State.Profile_Page =  Profile_Reducer (this._State.Profile_Page, Action);
+        this._State.Dialogs_Page =  Dialogs_Reducer (this._State.Dialogs_Page, Action);
+        this._Coll_Subscriber(this._State);
+
     }
 
 }
