@@ -2,26 +2,29 @@ import s from './My_Posts.module.css'
 import Post from "./Post/Post";
 import React from "react";
 import {Add_Post_Action_Creator} from "../../../Redux/Profile_Reducer";
+import {Update_New_Message_Body_Creator} from "../../../Redux/Dialogs_Reducer";
 
 
 
-const My_Posts = (Props) => {
+const My_Posts = (props) => {
 
-    let Posts_Elements = Props.Profile_Page.Posts.map(
+    let Posts_Elements = props.Profile_Page.Posts.map(
         d => <Post Post_Text={d.Post} Post_Img={d.Img_link}/>);
-    let New_Post_Element = React.createRef();
-    let Add_Post = () => {
-        let text = New_Post_Element.current.value;
-        let Action = Add_Post_Action_Creator (text);
-        Props.Dispatch(Action);
+    let New_Message_Text_Body = props.Profile_Page.New_Post_Text;
+    let On_NewMessage_Chenge = (Event) => {
+        let New_Post_Text = Event.target.value;
+       props.On_Change_New_Post_Text(New_Post_Text);
+    }
+    let add_post = () => {
+        props.add_post ();
     }
 
     return (
         <div className={s.My_Posts_Wrapper}>
             <div className={s.My_Posts_Header}>
                 <h1>Лента постов </h1>
-                <textarea ref={New_Post_Element}></textarea>
-                <button onClick={Add_Post }>Add post</button>
+                <textarea value={New_Message_Text_Body} onChange={On_NewMessage_Chenge} ></textarea>
+                <button onClick={add_post}>Add post</button>
             </div>
             <div className={s.My_Posts}>
                 {Posts_Elements}
