@@ -9,8 +9,12 @@ export const Profile_Reducer = (State, Action) => {
         }
         State.Posts.push(New_Post);
     }
-
-
     return State;
+}
+export const Add_Post_Action_Creator = (text) => {
+    return {
+        Type: ADD_POST,
+        New_Text: text
+    }
 }
 export default Profile_Reducer;

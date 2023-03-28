@@ -1,7 +1,7 @@
 import s from './My_Posts.module.css'
 import Post from "./Post/Post";
 import React from "react";
-import {Add_Post_Action_Creator} from "../../../Redux/State";
+import {Add_Post_Action_Creator} from "../../../Redux/Profile_Reducer";
 
 
 
