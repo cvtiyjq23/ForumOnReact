@@ -15,19 +15,19 @@ let initialState = {
             {id: 3, Message: 'Привет, это тестовое сообщение33'},
             {id: 4, Message: 'Привет, это тестовое сообщение4'}
         ],
-        New_Message_Body: ''
+        new_message_text: ''
     }
 }
 const Dialogs_Reducer = (state = initialState, action) => {
     switch (action.type){
         case UPDATE_NEW_MESSAGE_BODY:
-            state.New_Message_Body = action.New_Text_Message;
+            state.Dialogs_Page.new_message_text = action.New_Text_Message;
             break;
         case SEND_MESSAGE:
             let Body = '';
-            Body = state.New_Message_Body; // текст в textArea при клике на отправить
-            state.Messages.push({id: 6, Message: Body});
-            state.New_Message_Body = ''; //Зануление textArea после отправки
+            Body = state.Dialogs_Page.new_message_text; // текст в textArea при клике на отправить
+            state.Dialogs_Page.Messages.push({id: 6, Message: Body});
+            state.Dialogs_Page.new_message_text = ''; //Зануление textArea после отправки
             break;
         default:  return state;
     }
@@ -37,13 +37,13 @@ const Dialogs_Reducer = (state = initialState, action) => {
 
 export const Send_Message_Creator = (text) => {
     return {
-        Type: SEND_MESSAGE,
+        type: SEND_MESSAGE,
         New_Text: text
     }
 }
-export const Update_New_Message_Body_Creator = (text) => {
+export const Update_New_Message_Text_Creator = (text) => {
     return {
-        Type: UPDATE_NEW_MESSAGE_BODY,
+        type: UPDATE_NEW_MESSAGE_BODY,
         New_Text_Message: text
     }
 }
