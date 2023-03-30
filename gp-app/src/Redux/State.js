@@ -48,24 +48,8 @@ let Store = {
     }
 
 }
-export const Add_Post_Action_Creator = (text) => {
-    return {
-        Type: ADD_POST,
-        New_Text: text
-    }
-}
-export const Send_Message_Creator = (text) => {
-    return {
-        Type: SEND_MESSAGE,
-        New_Text: text
-    }
-}
-export const Update_New_Message_Body_Creator = (text) => {
-    return {
-        Type: UPDATE_NEW_MESSAGE_BODY,
-        New_Text_Message: text
-    }
-}
+
+
 
 export default Store;
 Window._Store = Store;

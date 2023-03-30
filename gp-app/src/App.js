@@ -7,9 +7,10 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Store from "./Redux/State";
+import Dialogs_Container from "./Components/Dialogs/Dialogs_Container";
 
 
-function App(Props) {
+function App(props) {
 
     return (
         <BrowserRouter>
@@ -18,8 +19,8 @@ function App(Props) {
             <Nav_Bar/>
             <div className="content_Wrapper">
                 <Routes>
-                    <Route path='/profile' element={<Profile Profile_Page ={Props.State.Profile_Page} Dispatch = {Props.Dispatch}/>}/>
-                    <Route path='/dialogs/*' element={<Dialogs Dialogs_Page = {Props.State.Dialogs_Page} Dispatch = {Props.Dispatch} />}/>
+                    <Route path='/profile' element={<Profile store = {props.store} />}/>
+                    <Route path='/dialogs/*' element={<Dialogs_Container store = {props.store} />}/>
                 </Routes>
             </div>
 
