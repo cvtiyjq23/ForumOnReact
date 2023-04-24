@@ -8,9 +8,8 @@ import {Update_New_Message_Body_Creator} from "../../../Redux/Dialogs_Reducer";
 
 const My_Posts = (props) => {
 
-    let Posts_Elements = props.Profile_Page.Posts.map(
-        d => <Post Post_Text={d.Post} Post_Img={d.Img_link}/>);
-    let New_Message_Text_Body = props.Profile_Page.New_Post_Text;
+    //let Posts_Elements = props.Profile_Page.Posts.map(d => <Post Post_Text={d.Post} Post_Img={d.Img_link}/>);
+    let New_Message_Text_Body = props.New_Message_Text_Body;
     let On_NewMessage_Chenge = (Event) => {
         let New_Post_Text = Event.target.value;
        props.On_Change_New_Post_Text(New_Post_Text);
@@ -27,7 +26,7 @@ const My_Posts = (props) => {
                 <button onClick={add_post}>Add post</button>
             </div>
             <div className={s.My_Posts}>
-                {Posts_Elements}
+                {props.Posts_Elements}
 
             </div>
 
