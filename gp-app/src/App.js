@@ -13,7 +13,7 @@ import Dialogs_Container from "./Components/Dialogs/Dialogs_Container";
 function App(props) {
 
     return (
-        <BrowserRouter>
+
         <div className="App_Wrapper">
             <Header/>
             <Nav_Bar/>
@@ -25,7 +25,7 @@ function App(props) {
             </div>
 
         </div>
-        </BrowserRouter>
+
     );
 }
 

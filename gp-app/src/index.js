@@ -6,15 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import Store from "./Redux/redux_store";
 import App from "./App";
 import store from "./Redux/redux_store";
-
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Provider} from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 let Rerender_Entire_Tree = (State) => {
     root.render(
+        <BrowserRouter>
         <React.StrictMode>
-            <App store = {store} />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </React.StrictMode>
+        </BrowserRouter>
     );
 }
 Rerender_Entire_Tree (store.getState());
