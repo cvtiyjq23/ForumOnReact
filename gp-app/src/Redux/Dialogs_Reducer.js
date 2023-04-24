@@ -19,6 +19,7 @@ let initialState = {
     }
 }
 const Dialogs_Reducer = (state = initialState, action) => {
+
     switch (action.type){
         case UPDATE_NEW_MESSAGE_BODY:
             state.Dialogs_Page.new_message_text = action.New_Text_Message;
