@@ -21,15 +21,20 @@ let initialState = {
 const Dialogs_Reducer = (state = initialState, action) => {
 
     switch (action.type){
-        case UPDATE_NEW_MESSAGE_BODY:
-            state.Dialogs_Page.new_message_text = action.New_Text_Message;
-            break;
-        case SEND_MESSAGE:
+        case UPDATE_NEW_MESSAGE_BODY: {
+            let state_copy = {...state}
+            state_copy.Dialogs_Page.new_message_text = action.New_Text_Message;
+        return state_copy
+        }
+        case SEND_MESSAGE: {
+            let state_copy = {...state}
+            state_copy.Dialogs_Page.Messages = [...state.Dialogs_Page.Messages]
             let Body = '';
-            Body = state.Dialogs_Page.new_message_text; // текст в textArea при клике на отправить
-            state.Dialogs_Page.Messages.push({id: 6, Message: Body});
-            state.Dialogs_Page.new_message_text = ''; //Зануление textArea после отправки
-            break;
+            Body = state_copy.Dialogs_Page.new_message_text; // текст в textArea при клике на отправить
+            state_copy.Dialogs_Page.Messages.push({id: 6, Message: Body});
+            state_copy.Dialogs_Page.new_message_text = ''; //Зануление textArea после отправки
+            return state_copy
+        }
         default:  return state;
     }
 

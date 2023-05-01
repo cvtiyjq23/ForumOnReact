@@ -11,6 +11,8 @@ const UPDATE_NEW_NEW_POST_TEXT = 'UPDATE_NEW_NEW_POST_TEXT';
     }
 
     const Profile_Reducer = (state = initialState, action) => {
+        let state_copy = {...state}
+        state_copy.Posts = [...state.Posts]
         switch (action.type) {
             case ADD_POST:
                 let NewPost = {
@@ -18,17 +20,19 @@ const UPDATE_NEW_NEW_POST_TEXT = 'UPDATE_NEW_NEW_POST_TEXT';
                     Post: action.New_Post_Text,
                     Img_link: "https://cs14.pikabu.ru/post_img/2022/08/20/3/1660966459110589294.jpg"
                 }
-                state.Posts.push(NewPost);
+                state_copy.Posts.push(NewPost);
                 break;
                 case UPDATE_NEW_NEW_POST_TEXT:
-                    state.New_Post_Text = action.New_Post_Text;
+                    state_copy.New_Post_Text = action.New_Post_Text;
                     break;
-            default: return state;
+            default: return state_copy;
         }
-        return state;
+        return state_copy;
     }
 export const Add_Post_Action_Creator = (New_Post_Text) => {
-    return {
+    console.log(New_Post_Text)
+    debugger
+        return {
         type: ADD_POST,
         New_Post_Text: New_Post_Text
     }
