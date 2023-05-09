@@ -5,36 +5,14 @@ const UNFOLLOW_USER = 'UNFOLLOW_USER';
 const SET_USERS = 'SET_USERS';
 
 let initialState = {
-   User: [
-       // {
-       //     user_id: 1,
-       //     followed: true,
-       //     avatar: 'https://kartinkived.ru/wp-content/uploads/2021/12/avatarka-dlya-vatsapa-krasivaya-panda.jpg',
-       //     user_name: 'Борис Микульский',
-       //     user_country: 'Россия'
-       // },
-       // {
-       //     user_id: 2,
-       //     followed: false,
-       //     avatar: 'https://kartinkived.ru/wp-content/uploads/2021/12/avatarka-dlya-vatsapa-krasivaya-panda.jpg',
-       //     user_name: 'Олег Майами',
-       //     user_country: 'Латвия'
-       // },
-       // {
-       //     user_id: 3,
-       //     followed: false,
-       //     avatar: 'https://kartinkived.ru/wp-content/uploads/2021/12/avatarka-dlya-vatsapa-krasivaya-panda.jpg',
-       //     user_name: 'Петрович',
-       //     user_country: 'Боливия'
-       // }
-   ]
+   Users:[]
 }
 const Users_Reducer = (state = initialState, action) => {
 
     switch (action.type) {
         case FOLLOW_USER:
             return {...state, //Копируется стейт и массив юзеров по средствам, далее через мапинг формируем копию обьекта юзер id которого совпадает с id экшена и модифицируем , если не один элемент не совпадет просто возвращаем изначальный массив юзеров.
-                Users: state.User.map(u => {
+                Users: state.Users.map(u => {
                     if (u.user_id === action.user_id){
                         return {...u, followed: true}
                     }
@@ -47,7 +25,7 @@ const Users_Reducer = (state = initialState, action) => {
         case UNFOLLOW_USER:
             return {
                 ...state,
-                Users:state.User.map(u=>{
+                Users:state.Users.map(u=>{
                     if (u.user_id === action.user_id){
                         return {...u, followed: false}
                     }
@@ -56,7 +34,8 @@ const Users_Reducer = (state = initialState, action) => {
 
             }
         case SET_USERS: {
-            return  {...state, users: [...state.User, ...action.users]}
+
+            return  {...state, Users: action.Users}
         }
 
 
@@ -66,24 +45,25 @@ const Users_Reducer = (state = initialState, action) => {
     return state;
 }
 // -----------------Криерторы---------------------
-export const Follow_User = (user_id) => {
+export const Follow_User_Action_Creator = (user_id) => {
     return {
         type: FOLLOW_USER,
         user_id: user_id
     }
 }
-export const UnFollow_User = (user_id) => {
+export const UnFollow_User_Action_Creator = (user_id) => {
     return {
         type: UNFOLLOW_USER,
         user_id: user_id
     }
 }
-export const Set_Users = (users) => {
+export const Set_Users_Action_Creator = (Users) => {
     return {
         type:SET_USERS,
-        users: users
-
+        Users: Users
     }
+
+
 
 }
 
