@@ -8,6 +8,7 @@ import Dialogs from "./Components/Dialogs/Dialogs";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Store from "./Redux/State";
 import Dialogs_Container from "./Components/Dialogs/Dialogs_Container";
+import Users_Container from "./Components/Users/Users_Container";
 
 
 function App(props) {
@@ -21,6 +22,7 @@ function App(props) {
                 <Routes>
                     <Route path='/profile' element={<Profile store = {props.store} />}/>
                     <Route path='/dialogs/*' element={<Dialogs_Container store = {props.store} />}/>
+                    <Route path='/users/*' element={<Users_Container store = {props.store} />}/>
                 </Routes>
             </div>
 

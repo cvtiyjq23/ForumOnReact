@@ -11,7 +11,6 @@ import {Provider} from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let Rerender_Entire_Tree = (State) => {
     root.render(
         <BrowserRouter>
         <React.StrictMode>
@@ -21,15 +20,9 @@ let Rerender_Entire_Tree = (State) => {
         </React.StrictMode>
         </BrowserRouter>
     );
-}
-Rerender_Entire_Tree (store.getState());
 
-store.subscribe(
-    () => {
-        let state = store.getState()
-        Rerender_Entire_Tree(state);
-    }
-)
+
+
 
 
 // If you want to start measuring performance in your app, pass a function
