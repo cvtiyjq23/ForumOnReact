@@ -1,0 +1,52 @@
+.Users_Wrapper{
+display: grid;
+    grid-template-columns: 2fr 2fr;
+    grid-gap: 5px;
+
+}
+.User_item {
+    height: 150px;
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    background-color: mistyrose;
+    grid-gap: 5px;
+}
+/*-------------Avatar_Block----------*/
+.User_Avatar_Block {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    grid-gap: 5px;
+}
+.User_Avatar{
+    height: 100px;
+}
+.User_Avatar img{
+   height: 100px;
+}
+.User_follow_Button {
+    align-self: center;
+}
+
+/*----------Profile_Block------------*/
+
+.User_Profile_Block {
+    display: grid;
+   grid-template-rows: 2fr;
+}
+
+.User_Name {
+
+}
+.User_Country {
+
+}
+
+
+
+
+/*display: grid;*/
+/*grid-template-columns: 1fr 2fr;*/
+/*grid-template-areas: "Profile_Avatar Profile_Info";*/
+/*background-color: deeppink;*/
+
+
