@@ -35,11 +35,9 @@ const Users_Reducer = (state = initialState, action) => {
             }
         case SET_USERS: {
 
-            return  {...state, Users: action.Users}
+            return  {...state, Users: action.Users.data.items}
+
         }
-
-
-
     }
 
     return state;
@@ -62,6 +60,7 @@ export const Set_Users_Action_Creator = (Users) => {
         type:SET_USERS,
         Users: Users
     }
+
 
 
 
